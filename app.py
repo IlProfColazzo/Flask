@@ -1,23 +1,19 @@
 from flask import Flask, render_template
+import random
 
 app = Flask(__name__)
 
 @app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
-
-@app.route("/francesco")
-def hello_francesco():
-    str = "Ciao a tutti, sono Francesco"
-    return "<p>"+str+"</p>"
-
-@app.route("/welcome")
 def welcome():
-    return render_template("welcome.html")
+    nomi = ["Andrea", "Mario", "Ettore", "Luigi"]
+    return render_template("welcome.html",titolo="Home page", nome = random.choice(nomi))
 
-#creare una welcome page, una about us page e una contact page.
-#Tre route differenti
-#All'interno delle tre pagine inserite una navbar (con i tre link).
-#Attenzione i link non devono portare da nessuna parte
+@app.route("/aboutus")
+def aboutus():
+    return render_template("aboutus.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
 
 app.run(debug=True)
