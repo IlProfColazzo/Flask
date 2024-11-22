@@ -13,7 +13,7 @@ def hello_francesco():
 
 @app.route("/welcome")
 def welcome():
-    return render_template("welcome.html"
+    return render_template("welcome.html")
 
 #creare una welcome page, una about us page e una contact page.
 #Tre route differenti
