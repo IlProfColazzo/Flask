@@ -8,16 +8,16 @@ def hello_world():
 
 @app.route("/francesco")
 def hello_francesco():
-    str = "Ciao a tutti"
+    str = "Ciao a tutti, sono Francesco"
     return "<p>"+str+"</p>"
 
 @app.route("/welcome")
 def welcome():
-    return render_template("welcome.html")
+    return render_template("welcome.html"
 
 #creare una welcome page, una about us page e una contact page.
 #Tre route differenti
-#All'interno delle tre pagine inserite una navbar (con i tre link.
+#All'interno delle tre pagine inserite una navbar (con i tre link).
 #Attenzione i link non devono portare da nessuna parte
 
 app.run(debug=True)
