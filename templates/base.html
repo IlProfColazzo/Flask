@@ -8,9 +8,10 @@
 <body>
     <nav>
         <ul>
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
+            <li><a href="{{url_for('welcome')}}">Link 1</a></li>
+            <li><a href="{{url_for('aboutus')}}">Link 2</a></li>
+            <li><a href="{{url_for('contact')}}">Link 3</a></li>
+            {%block altrilink%}{%endblock%}
         </ul>
     </nav>
     <div class="container">
