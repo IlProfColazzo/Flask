@@ -1,0 +1,8 @@
+{%extends 'base.html'%}
+{%block contenutoCointainer%}
+{%for d in details%}
+	<h2>CategoryID: {{d[0]}}</h2>
+	<h2>CategoryName: {{d[1]}}</h2>
+	<h2>Description: {{d[2]}}</h2>
+{%endfor%}
+{%endblock%}

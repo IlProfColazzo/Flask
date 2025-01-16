@@ -8,15 +8,17 @@
 <body>
     <nav>
         <ul>
-            <li><a href="{{url_for('welcome')}}">Link 1</a></li>
-            <li><a href="{{url_for('aboutus')}}">Link 2</a></li>
-            <li><a href="{{url_for('contact')}}">Link 3</a></li>
+            <li><a href="{{url_for('welcome')}}">Welcome</a></li>
+            <li><a href="{{url_for('aboutus')}}">About</a></li>
+            <li><a href="{{url_for('contact')}}">Contact</a></li>
+            <li><a href="{{url_for('firstSelect')}}">Products</a></li>
+            <li><a href="{{url_for('nomi')}}">Nomi</a></li>
+            <li><a href="{{url_for('registrati')}}">Registrati</a></li>
             {%block altrilink%}{%endblock%}
         </ul>
     </nav>
     <div class="container">
        {%block contenutoCointainer%}{%endblock%}
-       <h2>Ciao a tutti sono: {{nome}}</h2>
     </div>
 </body>
 </html>
