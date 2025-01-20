@@ -1,15 +1,19 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 import random
 from flask_mysqldb import MySQL
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
+app.secret_key = "super secret key"
+
 app.config['MYSQL_HOST'] = '138.41.20.102'
 app.config['MYSQL_PORT'] = 53306
 app.config['MYSQL_USER'] = 'ospite'
 app.config['MYSQL_PASSWORD'] = 'ospite'
 app.config['MYSQL_DB'] = 'w3schools'
 mysql = MySQL(app)
+
+
 
 @app.route("/")
 def welcome():
@@ -62,7 +66,7 @@ def registrati():
     if request.method == 'GET':
         return render_template("register.html")
     else:
-        pass
+        #pass
         #logica applicativa
         #controllo che i campi siano presenti
         #posso controllare il tipo
@@ -71,6 +75,39 @@ def registrati():
         nome = request.form.get("nome","")
         if nome=="":
             print("Campo vuoto o non ricevuto")
+        #query = "INSERT INTO users (%s,%s);"
+        #execute(query,(username,generate_password_hash(password)))
+        #print(generate_password_hash(nome))
+        flash("Username ricevuto")
+        flash("Secondo messaggio")
+
         return redirect(url_for('welcome'))
+    
+@app.route("/pseudoLogin/",methods=["GET"])
+def pseudoLogin():
+    username = "carpe"
+    password = "123456"
+
+    query = "select * from users where username = %s"
+    cursor = mysql.connection.cursor()
+    cursor.execute(query,(username,))
+    ris = cursor.fetchall()
+    if len(ris)==0:
+        #utente inesistente
+        pass
+    else:
+        #utente esiste
+        #((carpe,hdjkahgkjdshjksajkgbhajfnbjkafbdnjkzbns))
+        passwordHashataMemorizzata = ris[0][1]
+        if check_password_hash(passwordHashataMemorizzata,password):
+            #utente esiste e password corretta
+            pass
+        else:
+            #utente esiste ma password errata
+            pass
+
+
+
+
     
 app.run(debug=True)
